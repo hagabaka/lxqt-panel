@@ -63,7 +63,7 @@ ColorPickerWidget::ColorPickerWidget(QWidget *parent):
     layout->addWidget (&mLineEdit);
 
 
-    mButton.setIcon(XdgIcon::fromTheme("color-picker", "kcolorchooser"));
+    mButton.setIcon(PanelIcon::fromTheme("color-picker", "kcolorchooser"));
 
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));

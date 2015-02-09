@@ -29,6 +29,7 @@
 #include "lxqtpanelapplication.h"
 #include "lxqtpanel.h"
 #include "config/configpaneldialog.h"
+#include "panelicon.h"
 #include <LXQt/Settings>
 #include <QtDebug>
 #include <QUuid>
@@ -72,6 +73,16 @@ LxQtPanelApplication::LxQtPanelApplication(int& argc, char** argv)
 
 
     QStringList panels = mSettings->value("panels").toStringList();
+
+    // Set the configured icon theme for panel application
+    // This setting exists because certain icon themes are designed only for light or dark
+    // backgrounds, and panel themes exist with light and dark backgrounds
+    // FIXME Configuration dialogs will also use this theme which may result in them displaying
+    // low visibility icons
+    QVariant iconTheme = mSettings->value("iconTheme");
+    if(iconTheme.isValid()) {
+        PanelIcon::setThemeName(iconTheme.toString());
+    }
 
     if (panels.isEmpty())
     {

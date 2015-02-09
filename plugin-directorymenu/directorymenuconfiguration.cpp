@@ -32,7 +32,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 
 #include "directorymenuconfiguration.h"
 #include "ui_directorymenuconfiguration.h"
@@ -44,7 +44,7 @@ DirectoryMenuConfiguration::DirectoryMenuConfiguration(QSettings &settings, QWid
     mSettings(settings),
     mOldSettings(settings),
     mBaseDirectory(QDir::homePath()),
-    mDefaultIcon(XdgIcon::fromTheme("folder"))
+    mDefaultIcon(PanelIcon::fromSystemTheme("folder"))
 {
     setAttribute(Qt::WA_DeleteOnClose);
     setObjectName("DirectoryMenuConfigurationWindow");

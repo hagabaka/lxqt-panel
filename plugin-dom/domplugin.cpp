@@ -28,7 +28,7 @@
 #include "domplugin.h"
 #include "treewindow.h"
 #include <QDebug>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 
 
 DomPlugin::DomPlugin(const ILxQtPanelPluginStartupInfo &startupInfo):
@@ -36,7 +36,7 @@ DomPlugin::DomPlugin(const ILxQtPanelPluginStartupInfo &startupInfo):
     ILxQtPanelPlugin(startupInfo)
 {
     mButton.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    mButton.setIcon(XdgIcon::fromTheme("preferences-plugin"));
+    mButton.setIcon(PanelIcon::fromTheme("preferences-plugin"));
     connect(&mButton, SIGNAL(clicked()), this, SLOT(showDialog()));
 }
 

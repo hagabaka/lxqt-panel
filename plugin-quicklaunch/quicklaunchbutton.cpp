@@ -34,7 +34,7 @@
 #include <QStylePainter>
 #include <QStyleOptionToolButton>
 #include <QApplication>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 
 #define MIMETYPE "x-lxqt/quicklaunch-button"
 
@@ -49,14 +49,14 @@ QuickLaunchButton::QuickLaunchButton(QuickLaunchAction * act, QWidget * parent)
     setDefaultAction(mAct);
     mAct->setParent(this);
 
-    mMoveLeftAct = new QAction(XdgIcon::fromTheme("go-previous"), tr("Move left"), this);
+    mMoveLeftAct = new QAction(PanelIcon::fromTheme("go-previous"), tr("Move left"), this);
     connect(mMoveLeftAct, SIGNAL(triggered()), this, SIGNAL(movedLeft()));
 
-    mMoveRightAct = new QAction(XdgIcon::fromTheme("go-next"), tr("Move right"), this);
+    mMoveRightAct = new QAction(PanelIcon::fromTheme("go-next"), tr("Move right"), this);
     connect(mMoveRightAct, SIGNAL(triggered()), this, SIGNAL(movedRight()));
 
 
-    mDeleteAct = new QAction(XdgIcon::fromTheme("dialog-close"), tr("Remove from quicklaunch"), this);
+    mDeleteAct = new QAction(PanelIcon::fromTheme("dialog-close"), tr("Remove from quicklaunch"), this);
     connect(mDeleteAct, SIGNAL(triggered()), this, SLOT(selfRemove()));
     addAction(mDeleteAct);
     mMenu = new QMenu(this);

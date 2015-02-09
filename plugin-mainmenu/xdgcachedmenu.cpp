@@ -29,7 +29,7 @@
 #include <QMouseEvent>
 #include <QApplication>
 #include <XdgDesktopFile>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 #include <QHelpEvent>
 #include <QMimeData>
 #include <QDebug>
@@ -59,7 +59,7 @@ void XdgCachedMenuAction::updateIcon()
 {
     if(icon().isNull())
     {
-        QIcon icon = XdgIcon::fromTheme(menu_cache_item_get_icon(item_));
+        QIcon icon = PanelIcon::fromTheme(menu_cache_item_get_icon(item_));
         setIcon(icon);
     }
 }

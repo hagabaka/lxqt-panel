@@ -38,7 +38,7 @@
 #include <QDragLeaveEvent>
 #include <QStringBuilder>
 #include <QMenu>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 #include <KF5/KWindowSystem/KWindowSystem>
 
 /************************************************
@@ -78,7 +78,7 @@ void LxQtTaskGroup::contextMenuEvent(QContextMenuEvent *event)
 
     QMenu * menu = new QMenu(tr("Group"));
     menu->setAttribute(Qt::WA_DeleteOnClose);
-    QAction *a = menu->addAction(XdgIcon::fromTheme("process-stop"), tr("Close group"));
+    QAction *a = menu->addAction(PanelIcon::fromTheme("process-stop"), tr("Close group"));
     connect(a, SIGNAL(triggered()), this, SLOT(closeGroup()));
     connect(menu, &QMenu::aboutToHide, [this] {
         mPreventPopup = false;

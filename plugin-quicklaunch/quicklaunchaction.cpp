@@ -33,7 +33,7 @@
 #include <QProcess>
 #include <QUrl>
 #include <XdgDesktopFile>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 #include <XdgMimeType>
 
 
@@ -51,7 +51,7 @@ QuickLaunchAction::QuickLaunchAction(const QString & name,
     m_settingsMap["icon"] = icon;
 
     if (icon == "" || icon.isNull())
-        setIcon(XdgIcon::defaultApplicationIcon());
+        setIcon(PanelIcon::defaultApplicationIcon());
     else
         setIcon(QIcon(icon));
 
@@ -74,7 +74,7 @@ QuickLaunchAction::QuickLaunchAction(const XdgDesktopFile * xdg,
         title += " (" + gn + ")";
     setText(title);
 
-    setIcon(xdg->icon(XdgIcon::defaultApplicationIcon()));
+    setIcon(PanelIcon::ofDesktopFile(*xdg));
 
     setData(xdg->fileName());
     connect(this, SIGNAL(triggered()), this, SLOT(execAction()));

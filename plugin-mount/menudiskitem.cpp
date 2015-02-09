@@ -33,7 +33,7 @@
 #include <QHBoxLayout>
 #include <QUrl>
 #include <QTimer>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 #include <Solid/StorageAccess>
 #include <Solid/OpticalDrive>
 #include <LXQt/Notification>
@@ -59,7 +59,7 @@ MenuDiskItem::MenuDiskItem(Solid::Device device, Popup *popup):
 
     mEjectButton = new QToolButton(this);
     mEjectButton->setObjectName("EjectButton");
-    mEjectButton->setIcon(XdgIcon::fromTheme("media-eject"));
+    mEjectButton->setIcon(PanelIcon::fromTheme("media-eject"));
     connect(mEjectButton, &QToolButton::clicked, this, &MenuDiskItem::ejectButtonClicked);
 
     QHBoxLayout *layout = new QHBoxLayout(this);
@@ -89,7 +89,7 @@ void MenuDiskItem::setMountStatus(bool mounted)
 
 void MenuDiskItem::updateMountStatus()
 {
-    static const QIcon icon = XdgIcon::fromTheme(mDevice.icon(), QStringLiteral("drive-removable-media"));
+    static const QIcon icon = PanelIcon::fromTheme(mDevice.icon(), QStringLiteral("drive-removable-media"));
 
     if (mDevice.isValid())
     {

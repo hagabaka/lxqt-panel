@@ -41,7 +41,7 @@
 #include <QUrl>
 #include <QSettings>
 #include <XdgDesktopFile>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 #include <LXQt/GridLayout>
 
 

@@ -46,7 +46,7 @@
 
 #include <LXQt/Settings>
 #include <LXQt/Translator>
-#include <XdgIcon>
+#include "panelicon.h"
 
 // statically linked built-in plugins
 #include "../plugin-clock/lxqtclock.h" // clock
@@ -399,20 +399,20 @@ QMenu *Plugin::popupMenu() const
     if (mPlugin->flags().testFlag(ILxQtPanelPlugin::HaveConfigDialog))
     {
         QAction* configAction = new QAction(
-            XdgIcon::fromTheme(QStringLiteral("preferences-other")),
+            PanelIcon::fromTheme(QStringLiteral("preferences-other")),
             tr("Configure \"%1\"").arg(name), menu);
         menu->addAction(configAction);
         connect(configAction, SIGNAL(triggered()), this, SLOT(showConfigureDialog()));
     }
 
-    QAction* moveAction = new QAction(XdgIcon::fromTheme("transform-move"), tr("Move \"%1\"").arg(name), menu);
+    QAction* moveAction = new QAction(PanelIcon::fromTheme("transform-move"), tr("Move \"%1\"").arg(name), menu);
     menu->addAction(moveAction);
     connect(moveAction, SIGNAL(triggered()), this, SIGNAL(startMove()));
 
     menu->addSeparator();
 
     QAction* removeAction = new QAction(
-        XdgIcon::fromTheme(QStringLiteral("list-remove")),
+        PanelIcon::fromTheme(QStringLiteral("list-remove")),
         tr("Remove \"%1\"").arg(name), menu);
     menu->addAction(removeAction);
     connect(removeAction, SIGNAL(triggered()), this, SLOT(requestRemove()));

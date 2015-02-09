@@ -42,7 +42,7 @@
 #include <QTimer>
 
 #include <LXQt/GridLayout>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 
 #include "lxqttaskbar.h"
 #include "lxqttaskgroup.h"

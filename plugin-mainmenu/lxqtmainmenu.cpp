@@ -45,7 +45,7 @@
 #include <algorithm> // for find_if()
 #include <KWindowSystem/KWindowSystem>
 
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 #include <XdgDesktopFile>
 #include <XdgMenuWidget>
 

@@ -34,7 +34,8 @@
 #include <QMouseEvent>
 #include <QProcess>
 
-#include <XdgIcon>
+
+#include "../panel/panelicon.h"
 #include "../panel/ilxqtpanel.h"
 #include "../panel/ilxqtpanelplugin.h"
 
@@ -151,5 +152,5 @@ void VolumeButton::handleMixerLaunch()
 
 void VolumeButton::handleStockIconChanged(const QString &iconName)
 {
-    setIcon(XdgIcon::fromTheme(iconName));
+    setIcon(PanelIcon::fromTheme(iconName));
 }

@@ -35,19 +35,19 @@
 #include <QUrl>
 #include <QIcon>
 
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 
 DirectoryMenu::DirectoryMenu(const ILxQtPanelPluginStartupInfo &startupInfo) :
     QObject(),
     ILxQtPanelPlugin(startupInfo),
     mMenu(0),
-    mDefaultIcon(XdgIcon::fromTheme("folder"))
+    mDefaultIcon(PanelIcon::fromTheme("folder"))
 {
     mOpenDirectorySignalMapper = new QSignalMapper(this);
     mMenuSignalMapper = new QSignalMapper(this);
 
     mButton.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-    mButton.setIcon(XdgIcon::fromTheme("folder"));
+    mButton.setIcon(PanelIcon::fromTheme("folder"));
 
     connect(&mButton, SIGNAL(clicked()), this, SLOT(showMenu()));
     connect(mOpenDirectorySignalMapper, SIGNAL(mapped(QString)), this, SLOT(openDirectory(QString)));
@@ -143,7 +143,7 @@ void DirectoryMenu::addActions(QMenu* menu, const QString& path)
 {
 	mPathStrings.push_back(path);
 
-	QAction* openDirectoryAction = menu->addAction(XdgIcon::fromTheme("folder"), tr("Open"));
+	QAction* openDirectoryAction = menu->addAction(PanelIcon::fromTheme("folder"), tr("Open"));
 	connect(openDirectoryAction, SIGNAL(triggered()), mOpenDirectorySignalMapper, SLOT(map()));
 	mOpenDirectorySignalMapper->setMapping(openDirectoryAction, mPathStrings.back());
 
@@ -158,7 +158,7 @@ void DirectoryMenu::addActions(QMenu* menu, const QString& path)
     	{
 			mPathStrings.push_back(entry.fileName());
 
-			QMenu* subMenu = menu->addMenu(XdgIcon::fromTheme("folder"), mPathStrings.back());
+			QMenu* subMenu = menu->addMenu(PanelIcon::fromTheme("folder"), mPathStrings.back());
 
     		connect(subMenu, SIGNAL(aboutToShow()), mMenuSignalMapper, SLOT(map()));
     		mMenuSignalMapper->setMapping(subMenu, entry.absoluteFilePath());

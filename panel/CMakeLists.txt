@@ -10,6 +10,7 @@ set(PRIV_HEADERS
     popupmenu.h
     pluginmoveprocessor.h
     lxqtpanelpluginconfigdialog.h
+    panelicon.h
     config/configpaneldialog.h
     config/configpanelwidget.h
     config/configpluginswidget.h
@@ -33,6 +34,7 @@ set(SOURCES
     popupmenu.cpp
     pluginmoveprocessor.cpp
     lxqtpanelpluginconfigdialog.cpp
+    panelicon.cpp
     config/configpaneldialog.cpp
     config/configpanelwidget.cpp
     config/configpluginswidget.cpp

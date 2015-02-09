@@ -33,7 +33,7 @@
 #include "lxqttaskbar.h"
 
 #include <QDebug>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 #include <QTimer>
 #include <QMenu>
 #include <QAction>
@@ -126,7 +126,7 @@ void LxQtTaskButton::updateIcon()
     QIcon ico;
     QPixmap pix = KWindowSystem::icon(mWindow);
     ico.addPixmap(pix);
-    setIcon(!pix.isNull() ? ico : XdgIcon::defaultApplicationIcon());
+    setIcon(!pix.isNull() ? ico : PanelIcon::defaultApplicationIcon());
 }
 
 /************************************************
@@ -565,7 +565,7 @@ void LxQtTaskButton::contextMenuEvent(QContextMenuEvent* event)
 
     /********** Kill menu **********/
     menu->addSeparator();
-    a = menu->addAction(XdgIcon::fromTheme("process-stop"), tr("&Close"));
+    a = menu->addAction(PanelIcon::fromTheme("process-stop"), tr("&Close"));
     connect(a, SIGNAL(triggered(bool)), this, SLOT(closeApplication()));
     menu->setGeometry(mParentTaskBar->panel()->calculatePopupWindowPos(mapToGlobal(event->pos()), menu->sizeHint()));
     menu->show();

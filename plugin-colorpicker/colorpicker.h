@@ -35,7 +35,7 @@
 #include <QFontMetrics>
 #include <QLineEdit>
 #include <QToolButton>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 
 
 class ColorPickerWidget: public QFrame

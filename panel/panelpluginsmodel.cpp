@@ -29,7 +29,7 @@
 #include "lxqtpanel.h"
 #include "lxqtpanelapplication.h"
 #include <QPointer>
-#include <XdgIcon>
+#include "panelicon.h"
 #include <LXQt/Settings>
 
 #include <QDebug>
@@ -75,9 +75,9 @@ QVariant PanelPluginsModel::data(const QModelIndex & index, int role/* = Qt::Dis
             break;
         case Qt::DecorationRole:
             if (plugin.second.isNull())
-                ret = XdgIcon::fromTheme("preferences-plugin");
+                ret = PanelIcon::fromTheme("preferences-plugin");
             else
-                ret = plugin.second->desktopFile().icon(XdgIcon::fromTheme("preferences-plugin"));
+                ret = plugin.second->desktopFile().icon(PanelIcon::fromTheme("preferences-plugin"));
             break;
         case Qt::UserRole:
             ret = QVariant::fromValue(const_cast<Plugin const *>(plugin.second.data()));

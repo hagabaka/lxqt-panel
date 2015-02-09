@@ -29,7 +29,8 @@
 #include "lxqtmainmenuconfiguration.h"
 #include "ui_lxqtmainmenuconfiguration.h"
 #include <XdgMenu>
-#include <XdgIcon>
+
+#include "../panel/panelicon.h"
 
 #include <QFileDialog>
 
@@ -44,7 +45,7 @@ LxQtMainMenuConfiguration::LxQtMainMenuConfiguration(QSettings &settings, const 
     setObjectName("MainMenuConfigurationWindow");
     ui->setupUi(this);
 
-    ui->chooseMenuFilePB->setIcon(XdgIcon::fromTheme("folder"));
+    ui->chooseMenuFilePB->setIcon(PanelIcon::fromTheme("folder"));
 
     connect(ui->buttons, SIGNAL(clicked(QAbstractButton*)), this, SLOT(dialogButtonsAction(QAbstractButton*)));
 

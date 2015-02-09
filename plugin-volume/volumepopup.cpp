@@ -29,7 +29,7 @@
 
 #include "audiodevice.h"
 
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 
 #include <QSlider>
 #include <QStyleOptionButton>
@@ -62,7 +62,7 @@ VolumePopup::VolumePopup(QWidget* parent):
     m_volumeSlider->setRange(0, 100);
 
     m_muteToggleButton = new QPushButton(this);
-    m_muteToggleButton->setIcon(XdgIcon::fromTheme(QStringList() << "audio-volume-muted"));
+    m_muteToggleButton->setIcon(PanelIcon::fromTheme(QStringList() << "audio-volume-muted"));
     m_muteToggleButton->setCheckable(true);
     m_muteToggleButton->setAutoDefault(false);
 
@@ -157,7 +157,7 @@ void VolumePopup::updateStockIcon()
     else
         iconName = "audio-volume-high";
 
-    m_muteToggleButton->setIcon(XdgIcon::fromTheme(iconName));
+    m_muteToggleButton->setIcon(PanelIcon::fromTheme(iconName));
     emit stockIconChanged(iconName);
 }
 

@@ -29,7 +29,7 @@
 #include <QAction>
 #include <QX11Info>
 #include <lxqt-globalkeys.h>
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 #include <LXQt/Notification>
 #include <KWindowSystem/KWindowSystem>
 #include <KWindowSystem/NETWM>
@@ -52,7 +52,7 @@ ShowDesktop::ShowDesktop(const ILxQtPanelPluginStartupInfo &startupInfo) :
         connect(m_key, SIGNAL(activated()), this, SLOT(toggleShowingDesktop()));
     }
 
-    QAction * act = new QAction(XdgIcon::fromTheme("user-desktop"), tr("Show Desktop"), this);
+    QAction * act = new QAction(PanelIcon::fromTheme("user-desktop"), tr("Show Desktop"), this);
     connect(act, SIGNAL(triggered()), this, SLOT(toggleShowingDesktop()));
 
     mButton.setDefaultAction(act);

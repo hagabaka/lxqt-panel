@@ -45,7 +45,7 @@
 #include <QString>
 #include <QDesktopWidget>
 #include <QMenu>
-#include <XdgIcon>
+#include "panelicon.h"
 #include <XdgDirs>
 
 #include <KWindowSystem/KWindowSystem>
@@ -911,7 +911,7 @@ void LxQtPanel::showPopupMenu(Plugin *plugin)
     PopupMenu * menu = new PopupMenu(tr("Panel"), this);
     menu->setAttribute(Qt::WA_DeleteOnClose);
 
-    menu->setIcon(XdgIcon::fromTheme("configure-toolbars"));
+    menu->setIcon(PanelIcon::fromTheme("configure-toolbars"));
 
     // Plugin Menu ..............................
     if (plugin)
@@ -930,25 +930,25 @@ void LxQtPanel::showPopupMenu(Plugin *plugin)
 
     menu->addTitle(QIcon(), tr("Panel"));
 
-    menu->addAction(XdgIcon::fromTheme(QStringLiteral("configure")),
+    menu->addAction(PanelIcon::fromTheme(QStringLiteral("configure")),
                    tr("Configure Panel"),
                    this, SLOT(showConfigDialog())
                   );
 
-    menu->addAction(XdgIcon::fromTheme("preferences-plugin"),
+    menu->addAction(PanelIcon::fromTheme("preferences-plugin"),
                    tr("Manage Widgets"),
                    this, SLOT(showAddPluginDialog())
                   );
 
     LxQtPanelApplication *a = reinterpret_cast<LxQtPanelApplication*>(qApp);
-    menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),
+    menu->addAction(PanelIcon::fromTheme(QLatin1String("list-add")),
                    tr("Add Panel"),
                    a, SLOT(addNewPanel())
                   );
 
     if (a->count() > 1)
     {
-        menu->addAction(XdgIcon::fromTheme(QStringLiteral("list-remove")),
+        menu->addAction(PanelIcon::fromTheme(QStringLiteral("list-remove")),
                        tr("Remove Panel"),
                        this, SLOT(userRequestForDeletion())
                       );

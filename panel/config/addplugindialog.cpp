@@ -31,7 +31,7 @@
 #include "../lxqtpanelapplication.h"
 
 #include <LXQt/HtmlDelegate>
-#include <XdgIcon>
+#include "../panelicon.h"
 #include <XdgDirs>
 
 #include <QString>
@@ -90,7 +90,7 @@ void AddPluginDialog::filter()
     const int curr_item = 0 < pluginList->count() ? pluginList->currentRow() : 0;
     pluginList->clear();
 
-    static QIcon fallIco = XdgIcon::fromTheme("preferences-plugin");
+    static QIcon fallIco = PanelIcon::fromSystemTheme("preferences-plugin");
 
     int pluginCount = mPlugins.length();
     for (int i = 0; i < pluginCount; ++i)

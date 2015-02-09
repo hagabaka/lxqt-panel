@@ -27,12 +27,12 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include "button.h"
-#include <XdgIcon>
+#include "../panel/panelicon.h"
 
 Button::Button(QWidget * parent) :
     QToolButton(parent)
 {
-    setIcon(XdgIcon::fromTheme(QStringLiteral("drive-removable-media")));
+    setIcon(PanelIcon::fromTheme(QStringLiteral("drive-removable-media")));
     setToolTip(tr("Removable media/devices manager"));
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
